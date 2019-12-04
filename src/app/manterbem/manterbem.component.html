@@ -4,8 +4,8 @@
 <div class="container">
     <form>
             <div class="card">
-        
- <!-- botões-->  
+
+ <!-- botões-->
  <div class="card-header">
         <div class="row">
         <div class="col-8">
@@ -43,8 +43,8 @@
         </div>
         <div class="alert alert-primary" role="alert">
         {{msg}}
-        </div>        
-   <!--Formulario -->           
+        </div>
+   <!--Formulario -->
 <div class="card-body">
         <div class="form-row">
         <div class="form-group col-md-2">
@@ -56,13 +56,13 @@
                 <input type="text" class="form-control" name="inputNome" [(ngModel)]="Obj.nome">
                 </div>
                 <label for="inputCodigo">Classificação</label>
-                <select name="input_idCrfb" ngModel class="form-control">
-                        <option *ngFor="let prf of listaCrfb" [ngValue]="prf.descricao" class="form-control">
+                <select [compareWith]="compararClassificacao" name="input_idCrfb" [(ngModel)]="Obj.classificacao" class="form-control">
+                        <option *ngFor="let prf of listaCrfb" [ngValue]="prf" class="form-control">
                             {{ prf.descricao }}
                         </option>
-                    </select>  
+                    </select>
                  <!--    <label for="inputCodigo">Classificação</label>
-                    <select [(ngModel)]="Obj.Classificacao" [ngModelOptions]="{standalone: true}" class="form-control"> 
+                    <select [(ngModel)]="Obj.Classificacao" [ngModelOptions]="{standalone: true}" class="form-control">
                         <option *ngFor="let obj of listaCrfb" [ngValue]="obj.id"  [selected]="obj.id === Obj.Classificacao">{{obj.descricao}}</option>
                     </select>
                     <label for="inputCodigo">Classificação</label>
@@ -72,27 +72,27 @@
                             </option>
                      </select>
 
-                   <select [(ngModel)]="Obj.Classificacao" [ngModelOptions]="{standalone: true}" class="form-control"> 
+                   <select [(ngModel)]="Obj.Classificacao" [ngModelOptions]="{standalone: true}" class="form-control">
                         <option *ngFor="let obj of listaCrfb" [value]="obj.id">{{obj.descricao}}</option>
                     </select> -->
-                    
+
                     <div class="form-group col-md-4">
                             <label for="inputDescricao">Data aquisição</label>
                             <input type="text" class="form-control" name="inputDescricao" [(ngModel)]="Obj.dt_aquisicao">
-                            </div>           
+                            </div>
                            <!-- <div class="form-group col-md-4">
                                     <label for="inputDescricao">Valor aquisição</label>
                                     <input type="text" class="form-control" name="inputDescricao" [(ngModel)]="Obj.descricao">
-                                    
+
                                     </div>   -->
                                     <div class="form-group col-md-4">
                                             <label for="inputDescricao">Valor aquisição</label>
                                     <div class="input-group">
                                             <div class="input-group-prepend">
                                               <div class="input-group-text">R$</div>
-                                            </div> 
+                                            </div>
                                             <input id="codigo_bem" name="codigo_bem" type="text" aria-describedby="codigo_bemHelpBlock" required="required" class="form-control">
-                                          </div> 
+                                          </div>
                                     </div>
                                     <div class="form-group col-md-4">
                                             <label for="inputDescricao">Estado aquisição</label>
@@ -101,8 +101,8 @@
                                             <option value="false">Usado</option>
                                           </select>
                                     </div>
-                                   
-                                          
+
+
         <div class="form-group col-md-6">
         <label for="inputDescricao">Descrição</label>
         <input type="text" class="form-control" name="inputDescricao" [(ngModel)]="Obj.descricao">
@@ -117,8 +117,8 @@
         </div>
         </div>
 </div>
-  
-            </div>   
+
+            </div>
 <!--Listagem-->
         <div class="card">
             <div class="card-body">
@@ -142,3 +142,5 @@
     </form>
 </div>
 </div>
+
+<pre>{{Obj|json}}</pre>
