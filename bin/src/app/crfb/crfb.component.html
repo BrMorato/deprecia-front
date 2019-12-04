@@ -1,0 +1,61 @@
+<div class="container">
+    <form>
+        <!-- botões-->  
+        <div class="card-header">
+                    <div class="row">
+                    <div class="col-8">
+                    Lista de classificação da RFB
+                    </div>
+                    <div class="col-4">
+                    <button type="button" class="btn btn-primary" (click)="adicionarProfessor()">Adicionar</button> |
+                    <button type="button" class="btn btn-warning" (click)="alterarProfessor()">Alterar</button> |
+                    <button type="button" class="btn btn-danger" (click)="excluirProfessor()">Excluir</button>
+                    </div>
+                    </div>
+                    </div>
+                    <div class="alert alert-primary" role="alert">
+                    {{msg}}
+                    </div>
+
+   <!--Formulario -->           
+<div class="card-body">
+        <div class="form-row">
+        <div class="form-group col-md-6">
+        <label for="inputCodigo">Referência NCM</label>
+        <input type="text" class="form-control" name="inputRefNcm" [(ngModel)]="Obj.ref_ncm">
+        </div>
+        <div class="form-group col-md-6">
+        <label for="inputNome">Descrição</label>
+        <input type="text" class="form-control" name="inputDescricao" [(ngModel)]="Obj.descricao">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="inputNome">Vida útil</label>
+            <input type="text" class="form-control" name="inputVidaUtil" [(ngModel)]="Obj.vida_util">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputNome">Taxa depreciação</label>
+                <input type="text" class="form-control" name="inputTaxaDepreciacao" [(ngModel)]="Obj.taxa_depreciacao">
+                </div>
+        </div>
+</div>
+<!--Listagem-->
+        <div class="card">
+            <div class="card-body">
+                <table class="table">
+                    <th scope="col">Referência NCM</th>
+                    <th scope="col">Descrição do Bem</th>
+                    <th scope="col">Vida útil</th>
+                    <th scope="col">Taxa de depreciação</th>
+                    <th scope="col">...</th>
+                    <tr *ngFor="let objto of listaCrfb">
+                        <td>{{objto.ref_ncm}}</td>
+                        <td>{{objto.descricao}}</td>
+                        <td>{{objto.vida_util}}</td>
+                        <td>{{objto.taxa_depreciacao}}</td>
+                        <td><button type="button" class="btn btn-secondary" (click)="carregarDadosCrfb(objto)">Carregar</button></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </form>
+</div>

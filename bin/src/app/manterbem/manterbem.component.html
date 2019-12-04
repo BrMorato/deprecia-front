@@ -1,0 +1,67 @@
+<div class="container">
+    <form>
+   <!--Formulario -->           
+<div class="card-body">
+        <div class="form-row">
+                <div class="col-8"> Cadastro de Bens  </div>
+        <div class="form-group col-md-6">
+        <label for="inputCodigo">Código</label>
+        <input type="text" class="form-control" name="inputCodigo" [(ngModel)]="Obj.codigo">
+        </div>
+        <div class="form-group col-md-6">
+                <label for="inputNome">Nome</label>
+                <input type="text" class="form-control" name="inputNome" [(ngModel)]="Obj.nome">
+                </div>
+        <div class="form-group col-md-6">
+        <label for="inputDescricao">Descrição</label>
+        <input type="text" class="form-control" name="inputDescricao" [(ngModel)]="Obj.descricao">
+        </div>
+        <div class="form-group col-md-6">
+              <label for="inputClassificacao">Classificação</label>
+          <input type="text" class="form-control" name="inputClassificacao" [(ngModel)]="Obj.classificacao">
+             <div class="form-group col-md-6">
+                <label for="inputQuantidade">Quantidade</label>
+                <input type="text" class="form-control" name="inputQuantidade" [(ngModel)]="Obj.quantidade">
+                </div>
+        </div>
+        </div>
+</div>
+   <!-- botões-->  
+   <div class="card-header">
+        <div class="row">
+        <div class="col-8">
+        Lista de classificação da RFB
+        </div>
+        <div class="col-4">
+        <button type="button" class="btn btn-primary" (click)="adicionarBem()">Adicionar</button> |
+        <button type="button" class="btn btn-warning" (click)="alterarBem()">Alterar</button> |
+        <button type="button" class="btn btn-danger" (click)="excluirBem()">Excluir</button>
+        </div>
+        </div>
+        </div>
+        <div class="alert alert-primary" role="alert">
+        {{msg}}
+        </div>
+    
+<!--Listagem-->
+        <div class="card">
+            <div class="card-body">
+                <table class="table">
+                    <th scope="col">Referência NCM</th>
+                    <th scope="col">Descrição do Bem</th>
+                    <th scope="col">Vida útil</th>
+                    <th scope="col">Taxa de depreciação</th>
+                    <th scope="col">...</th>
+                    <tr *ngFor="let objto of listaBem">
+                        <td>{{objto.codigo}}</td>
+                        <td>{{objto.descricao}}</td>
+                        <td>{{objto.nome}}</td>
+                        <td>{{objto.quantidade}}</td>
+                        <td><button type="button" class="btn btn-secondary" (click)="carregarDadosBem(objto)">Carregar</button></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+    </form>
+</div>

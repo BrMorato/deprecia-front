@@ -1,0 +1,144 @@
+
+<div class="jumbotron jumbotron-fluid">
+
+<div class="container">
+    <form>
+            <div class="card">
+        
+ <!-- botões-->  
+ <div class="card-header">
+        <div class="row">
+        <div class="col-8">
+        Cadastro de Bens
+        </div>
+        <div class="col-4">
+        <!--<button type="button" class="btn btn-primary" (click)="adicionarBem()">Adicionar</button>-->
+        <button type="button" class="btn btn-primary" (click)="adicionarBem()">Adicionar</button> |
+        <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Alterar</button>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Confirmar a operação</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              Você está alterando um bem patrimonial, deseja prosseguir?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+              <button type="button" class="btn btn-primary" (click)="alterarBem()">Salvar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+       <!-- <button type="button" class="btn btn-primary"  (click)="adicionarBem()">Cadastrar</button>--> |
+        <button type="button" class="btn btn-primary" (click)="excluirBem()">Excluir</button>
+        </div>
+        </div>
+        </div>
+        <div class="alert alert-primary" role="alert">
+        {{msg}}
+        </div>        
+   <!--Formulario -->           
+<div class="card-body">
+        <div class="form-row">
+        <div class="form-group col-md-2">
+        <label for="inputCodigo">Código</label>
+        <input type="text" class="form-control" name="inputCodigo" [(ngModel)]="Obj.codigo">
+        </div>
+        <div class="form-group col-md-10">
+                <label for="inputNome">Nome {{Obj.Classificacao}}</label>
+                <input type="text" class="form-control" name="inputNome" [(ngModel)]="Obj.nome">
+                </div>
+                <label for="inputCodigo">Classificação</label>
+                <select name="input_idCrfb" ngModel class="form-control">
+                        <option *ngFor="let prf of listaCrfb" [ngValue]="prf.descricao" class="form-control">
+                            {{ prf.descricao }}
+                        </option>
+                    </select>  
+                 <!--    <label for="inputCodigo">Classificação</label>
+                    <select [(ngModel)]="Obj.Classificacao" [ngModelOptions]="{standalone: true}" class="form-control"> 
+                        <option *ngFor="let obj of listaCrfb" [ngValue]="obj.id"  [selected]="obj.id === Obj.Classificacao">{{obj.descricao}}</option>
+                    </select>
+                    <label for="inputCodigo">Classificação</label>
+                    <select class="form-control" name="status" [(ngModel)]="Obj.Classificacao">
+                        <option *ngFor="let prf of listaCrfb" [ngValue]="prf.id" class="form-control" >
+                                {{ prf.descricao }}
+                            </option>
+                     </select>
+
+                   <select [(ngModel)]="Obj.Classificacao" [ngModelOptions]="{standalone: true}" class="form-control"> 
+                        <option *ngFor="let obj of listaCrfb" [value]="obj.id">{{obj.descricao}}</option>
+                    </select> -->
+                    
+                    <div class="form-group col-md-4">
+                            <label for="inputDescricao">Data aquisição</label>
+                            <input type="text" class="form-control" name="inputDescricao" [(ngModel)]="Obj.dt_aquisicao">
+                            </div>           
+                           <!-- <div class="form-group col-md-4">
+                                    <label for="inputDescricao">Valor aquisição</label>
+                                    <input type="text" class="form-control" name="inputDescricao" [(ngModel)]="Obj.descricao">
+                                    
+                                    </div>   -->
+                                    <div class="form-group col-md-4">
+                                            <label for="inputDescricao">Valor aquisição</label>
+                                    <div class="input-group">
+                                            <div class="input-group-prepend">
+                                              <div class="input-group-text">R$</div>
+                                            </div> 
+                                            <input id="codigo_bem" name="codigo_bem" type="text" aria-describedby="codigo_bemHelpBlock" required="required" class="form-control">
+                                          </div> 
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                            <label for="inputDescricao">Estado aquisição</label>
+                                    <select id="estado_aquisicao" name="estado_aquisicao" class="custom-select" required="required">
+                                            <option value="true">Novo</option>
+                                            <option value="false">Usado</option>
+                                          </select>
+                                    </div>
+                                   
+                                          
+        <div class="form-group col-md-6">
+        <label for="inputDescricao">Descrição</label>
+        <input type="text" class="form-control" name="inputDescricao" [(ngModel)]="Obj.descricao">
+        </div>
+        <div class="form-group col-md-6">
+              <label for="inputClassificacao">Classificação</label>
+          <input type="text" class="form-control" name="inputIcrfb" [(ngModel)]="Obj.classificacao.id">
+             <div class="form-group col-md-6">
+                <label for="inputQuantidade">Quantidade</label>
+                <input type="text" class="form-control" name="inputQuantidade" [(ngModel)]="Obj.quantidade">
+                </div>
+        </div>
+        </div>
+</div>
+  
+            </div>   
+<!--Listagem-->
+        <div class="card">
+            <div class="card-body">
+                <table class="table">
+                    <th scope="col">Referência NCM</th>
+                    <th scope="col">Descrição do Bem</th>
+                    <th scope="col">Vida útil</th>
+                    <th scope="col">Taxa de depreciação</th>
+                    <th scope="col">...</th>
+                    <tr *ngFor="let objto of listaBem">
+                        <td>{{objto.codigo}}</td>
+                        <td>{{objto.descricao}}</td>
+                        <td>{{objto.nome}}</td>
+                        <td>{{objto.quantidade}}</td>
+                        <td><button type="button" class="btn btn-outline-info" (click)="carregarDadosBem(objto)">Carregar</button></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+    </form>
+</div>
+</div>
