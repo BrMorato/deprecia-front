@@ -21,7 +21,9 @@ export class ManterbemComponent implements OnInit {
   cssBarraNotify: String;
 
   ehVisivel: boolean = true;
+
   alertType: AlertType = AlertType.INFO;
+  
   mensagem: String = '';
 
 
@@ -85,5 +87,11 @@ consultarBem(){
   compararClassificacao(a, b) {
       return a.id === b.id;
   }
+
+  compararAB(a, b) {
+    return a === b;
+}
+
+
 
 }

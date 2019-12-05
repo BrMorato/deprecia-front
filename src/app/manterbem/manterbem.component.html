@@ -1,6 +1,5 @@
 
 <div class="jumbotron jumbotron-fluid">
-
 <div class="container">
     <form>
             <div class="card">
@@ -17,26 +16,7 @@
         <!-- Button trigger modal -->
 <!--<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Alterar</button>-->
 <button type="button" class="btn btn-primary" (click)="alterarBem()">Salvar</button>
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Confirmar a operação</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              Você está alterando um bem patrimonial, deseja prosseguir?
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-              <button type="button" class="btn btn-primary" (click)="alterarBem()">Salvar</button>
-            </div>
-          </div>
-        </div>
-      </div>
+
        <!-- <button type="button" class="btn btn-primary"  (click)="adicionarBem()">Cadastrar</button>--> |
         <button type="button" class="btn btn-primary" (click)="excluirBem()">Excluir</button>
         </div>
@@ -97,15 +77,15 @@
                                     </div>
                                     <div class="form-group col-md-4">
                                             <label for="inputDescricao">Estado aquisição</label>
-                                    <select id="estado_aquisicao" name="estado_aquisicao" class="custom-select" required="required">
+                                    <select id="estado_aquisicao" name="estado_aquisicao"  class="custom-select" required="required">
                                             <option value="true">Novo</option>
                                             <option value="false">Usado</option>
                                           </select>
                                     </div>
 
                                     <div class="form-group col-md-4">
-                                      <label for="inputDescricao">Estado aquisição</label>
-                              <select id="turnos" name="turnos" class="custom-select" required="required">
+                                      <label for="inputDescricao">Turnos trabalhados</label>
+                              <select id="turnos" name="turnos" class="custom-select" required="required" >
                                       <option value="1">1 Turno</option>
                                       <option value="2">2 Turno</option>
                                       <option value="3">3 Turno</option>

@@ -19,6 +19,8 @@ import { CrfbComponent } from './crfb/crfb.component';
 import { ManterbemComponent } from './manterbem/manterbem.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { AlertComponent } from './alert/alert.component';
+import { MenuComponent } from './menu/menu.component';
+import { InicialComponent } from './inicial/inicial.component';
 
 
 @NgModule({
@@ -26,7 +28,9 @@ import { AlertComponent } from './alert/alert.component';
     AppComponent,
     CrfbComponent,
     ManterbemComponent,
-    AlertComponent
+    AlertComponent,
+    MenuComponent,
+    InicialComponent
   ],
   imports: [
     BrowserModule,
