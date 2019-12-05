@@ -12,10 +12,11 @@
         Cadastro de Bens
         </div>
         <div class="col-4">
-        <!--<button type="button" class="btn btn-primary" (click)="adicionarBem()">Adicionar</button>-->
-        <button type="button" class="btn btn-primary" (click)="adicionarBem()">Adicionar</button> |
+        <button type="button" class="btn btn-primary" (click)="adicionarBem()">Adicionar</button>
+       <!-- <button type="button" class="btn btn-primary" (click)="adicionarBem()">Adicionar</button>--> |
         <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Alterar</button>
+<!--<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Alterar</button>-->
+<button type="button" class="btn btn-primary" (click)="alterarBem()">Salvar</button>
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -41,9 +42,9 @@
         </div>
         </div>
         </div>
-        <div class="alert alert-primary" role="alert">
-        {{msg}}
-        </div>
+        <app-alert [alerta]="mensagem" [ehVisivel]="ehVisivel" [alertType]="alertType" ></app-alert>
+
+       
    <!--Formulario -->
 <div class="card-body">
         <div class="form-row">
@@ -91,7 +92,7 @@
                                             <div class="input-group-prepend">
                                               <div class="input-group-text">R$</div>
                                             </div>
-                                            <input id="codigo_bem" name="codigo_bem" type="text" aria-describedby="codigo_bemHelpBlock" required="required" class="form-control">
+                                            <input id="codigo_bem" name="codigo_bem" type="text" aria-describedby="codigo_bemHelpBlock" required="required" class="form-control" [(ngModel)]="Obj.valor_aquisicao">
                                           </div>
                                     </div>
                                     <div class="form-group col-md-4">
@@ -102,19 +103,38 @@
                                           </select>
                                     </div>
 
-
-        <div class="form-group col-md-6">
+                                    <div class="form-group col-md-4">
+                                      <label for="inputDescricao">Estado aquisição</label>
+                              <select id="turnos" name="turnos" class="custom-select" required="required">
+                                      <option value="1">1 Turno</option>
+                                      <option value="2">2 Turno</option>
+                                      <option value="3">3 Turno</option>
+                                    </select>
+                              </div>
+                              <div class="form-group col-md-4">
+                                <label for="inputDescricao">Valor residual</label>
+                        <div class="input-group">
+                                <div class="input-group-prepend">
+                                  <div class="input-group-text">R$</div>
+                                </div>
+                                <input id="valor_residual" name="valor_residual" type="text" aria-describedby="valor_residualHelpBlock" required="required" class="form-control" [(ngModel)]="Obj.valor_residual">
+                              </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                          <label for="inputDescricao">Valor de venda</label>
+                  <div class="input-group">
+                          <div class="input-group-prepend">
+                            <div class="input-group-text">R$</div>
+                          </div>
+                          <input id="valor_venda" name="valor_venda" type="text" aria-describedby="valor_vendaHelpBlock" required="required" class="form-control" [(ngModel)]="Obj.valor_venda">
+                        </div>
+                  </div>
+        <div class="form-group col-md-12">
         <label for="inputDescricao">Descrição</label>
-        <input type="text" class="form-control" name="inputDescricao" [(ngModel)]="Obj.descricao">
-        </div>
-        <div class="form-group col-md-6">
-              <label for="inputClassificacao">Classificação</label>
-          <input type="text" class="form-control" name="inputIcrfb" [(ngModel)]="Obj.classificacao.id">
-             <div class="form-group col-md-6">
-                <label for="inputQuantidade">Quantidade</label>
-                <input type="text" class="form-control" name="inputQuantidade" [(ngModel)]="Obj.quantidade">
-                </div>
-        </div>
+       <!-- <input type="textarea" class="form-control" name="inputDescricao" [(ngModel)]="Obj.descricao">-->
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3">{{Obj.descricao}}</textarea>  
+      </div>
+        
         </div>
 </div>
 

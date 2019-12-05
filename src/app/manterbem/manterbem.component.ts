@@ -4,6 +4,9 @@ import{ Crfb } from '../modelo/crfb.model'
 
 import { ManterbemService } from '../servico/manterbem.service';
 import {CrfbService} from '../servico/crfb.service'
+import { ResolveEnd } from '@angular/router';
+import { resolve } from 'url';
+import {AlertType} from '../alert/alert';
 
 @Component({
   selector: 'app-manterbem',
@@ -14,6 +17,13 @@ export class ManterbemComponent implements OnInit {
   listaBem: Bem[] = [];
 
   listaCrfb: Crfb[] = [];
+
+  cssBarraNotify: String;
+
+  ehVisivel: boolean = true;
+  alertType: AlertType = AlertType.INFO;
+  mensagem: String = '';
+
 
 
   Obj: Bem= {id:0, codigo:'', nome:'' ,descricao:'', classificacao: new Crfb, valor_aquisicao:0.00, valor_venda:0.00, estado_aquisicao:false,turnos:0,status:false, dt_aquisicao: new(Date), dt_venda: new(Date)}
@@ -28,6 +38,7 @@ export class ManterbemComponent implements OnInit {
   ngOnInit( ){
     this.consultarBem();
     this.consultarCrfb();
+    this.cssBarraNotify ='alert alert-primary';
   }
 
 
@@ -49,8 +60,9 @@ consultarBem(){
   adicionarBem(){
     this.api.adicionarBem(this.Obj)
     .toPromise()
-    .then(Bem => {this.msg="Bem "+Bem.nome+" cadastrado com sucesso!";
-    this.consultarBem()});
+    .then(Bem => {
+    this.consultarBem();this.mensagem="Bem "+Bem.nome+" cadastrado com sucesso!";
+  this.ehVisivel=true;this.alertType=AlertType.SUCCESS;}, Bem=>{this.msg="Houve um problema ao cadastrar o bem!";this.cssBarraNotify='alert alert-danger';})
   }
   excluirBem(){
     this.api.excluirBem(this.Obj.id).toPromise()
@@ -60,7 +72,10 @@ consultarBem(){
 
   alterarBem(){
     this.api.alterarBem(this.Obj.id,this.Obj).toPromise()
-    .then(Bem =>{this.msg="Bem " +Bem.nome+" atualizada com sucesso!";this.consultarBem()});
+    .then(Bem =>{this.mensagem="Bem "+Bem.nome+" cadastrado com sucesso!";
+    this.ehVisivel=true;this.alertType=AlertType.SUCCESS;this.consultarBem();this.cssBarraNotify='alert alert-primary';}
+    ,Bem=>{this.mensagem="Houve um problema ao alterar!";
+    this.ehVisivel=true;this.alertType=AlertType.DANGER;});
   }
 
   carregarDadosBem(c: Bem){

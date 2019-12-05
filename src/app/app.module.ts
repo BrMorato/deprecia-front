@@ -10,7 +10,7 @@ import { Bem} from './modelo/bem.model';
 
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,13 +18,15 @@ import { AppComponent } from './app.component';
 import { CrfbComponent } from './crfb/crfb.component';
 import { ManterbemComponent } from './manterbem/manterbem.component';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { AlertComponent } from './alert/alert.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     CrfbComponent,
-    ManterbemComponent
+    ManterbemComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +36,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
     MatIconModule,
     NgSelectModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    ReactiveFormsModule
   ],
   providers: [{provide: MAT_LABEL_GLOBAL_OPTIONS, useValue: {float: 'always'}}],
   bootstrap: [AppComponent],
