@@ -14,7 +14,7 @@
        <!-- <button type="button" class="btn btn-primary" (click)="adicionarBem()">Adicionar</button>--> |
         <!-- Button trigger modal -->
 <!--<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Alterar</button>-->
-<button type="button" class="btn btn-primary" (click)="alterarBem()">Salvar</button>
+<button type="button" class="btn btn-primary" (click)="alterarBem()">Alterar</button>
 
        <!-- <button type="button" class="btn btn-primary"  (click)="adicionarBem()">Cadastrar</button>--> |
         <button type="button" class="btn btn-primary" (click)="excluirBem()">Excluir</button>
@@ -58,7 +58,7 @@
 
                     <div class="form-group col-md-4">
                             <label for="inputDescricao">Data aquisição</label>
-                            <input type="text" class="form-control" name="inputDescricao" [(ngModel)]="Obj.dt_aquisicao">
+                            <input type="date" min="01/01/2000" max="01/01/2020"  class="form-control" name="inputDescricao" [(ngModel)]="Obj.dt_aquisicao">
                             </div>
                            <!-- <div class="form-group col-md-4">
                                     <label for="inputDescricao">Valor aquisição</label>
@@ -71,7 +71,7 @@
                                             <div class="input-group-prepend">
                                               <div class="input-group-text">R$</div>
                                             </div>
-                                            <input id="codigo_bem" name="codigo_bem" type="text" aria-describedby="codigo_bemHelpBlock" required="required" class="form-control" [(ngModel)]="Obj.valor_aquisicao">
+                                            <input id="codigo_bem" name="codigo_bem" type="number" min="0.00" max="10000.00" step="0.01" aria-describedby="codigo_bemHelpBlock" required="required" class="form-control" [(ngModel)]="Obj.valor_aquisicao">
                                           </div>
                                     </div>
                                     <div class="form-group col-md-4">
@@ -84,7 +84,7 @@
 
                                     <div class="form-group col-md-4">
                                       <label for="inputDescricao">Turnos trabalhados</label>
-                              <select id="turnos" name="turnos" class="custom-select" required="required" >
+                              <select id="turnos" name="turnos" class="custom-select" required="required" [(ngModel)]="Obj.turnos" >
                                       <option value="1">1 Turno</option>
                                       <option value="2">2 Turno</option>
                                       <option value="3">3 Turno</option>
@@ -96,7 +96,7 @@
                                 <div class="input-group-prepend">
                                   <div class="input-group-text">R$</div>
                                 </div>
-                                <input id="valor_residual" name="valor_residual" type="text" aria-describedby="valor_residualHelpBlock" required="required" class="form-control" [(ngModel)]="Obj.valor_residual">
+                                <input id="valor_residual" name="valor_residual" type="number" min="0.00" max="10000.00" step="0.01" aria-describedby="valor_residualHelpBlock" required="required" class="form-control" [(ngModel)]="Obj.valor_residual">
                               </div>
                         </div>
                         <div class="form-group col-md-4">
@@ -105,9 +105,13 @@
                           <div class="input-group-prepend">
                             <div class="input-group-text">R$</div>
                           </div>
-                          <input id="valor_venda" name="valor_venda" type="text" aria-describedby="valor_vendaHelpBlock" required="required" class="form-control" [(ngModel)]="Obj.valor_venda">
+                          <input id="valor_venda" name="valor_venda"  type="number" min="0.00" max="10000.00" step="0.01" aria-describedby="valor_vendaHelpBlock" required="required" class="form-control" [(ngModel)]="Obj.valor_venda">
                         </div>
                   </div>
+                  <div class="form-group col-md-4">
+                                <label for="inputDataVenda">Data venda</label>
+                                <input type="date" min="01/01/2000" max="01/01/2020" value="00/00/0000" class="form-control" name="inputDescricao" [(ngModel)]="Obj.dt_venda">
+                                </div>
         <div class="form-group col-md-12">
         <label for="inputDescricao">Descrição</label>
        <!-- <input type="textarea" class="form-control" name="inputDescricao" [(ngModel)]="Obj.descricao">-->
@@ -126,14 +130,14 @@
                     <th scope="col">Nome</th>
                     <th scope="col">Valor</th>
                     <th scope="col">Vida útil</th>
-                    <th scope="col">Taxa de depreciação</th>
+                    <th scope="col">Taxa</th>
                     <th scope="col">...</th>
                     <tr *ngFor="let objto of listaBem">
                         <td>{{objto.codigo}}</td>
                         <td>{{objto.nome}}</td>
                         <td>{{objto.valor_aquisicao}}</td>
-                        <td>{{objto.classificacao.vida_util}}</td>
-                        <td>{{objto.classificacao.taxa_depreciacao}}</td>
+                        <td>&nbsp;{{objto.classificacao.vida_util}}</td>
+                        <td>{{objto.classificacao.taxa_depreciacao *100}}%</td>
                         <td><button type="button" class="btn btn-outline-info" (click)="carregarDadosBem(objto)">Carregar</button></td>
                     </tr>
                 </table>
