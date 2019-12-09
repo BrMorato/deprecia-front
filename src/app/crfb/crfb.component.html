@@ -1,22 +1,26 @@
 <div class="jumbotron jumbotron-fluid">
 <div class="container">
     <form>
+            <div class="card">
+
         <!-- botões-->  
         <div class="card-header">
                     <div class="row">
                     <div class="col-8">
-                    Lista de classificação da RFB
+                            <span class="badge badge-pill badge-primary"><h6>&nbsp;Classificação RFB&nbsp;</h6></span>
                     </div>
                     <div class="col-4">
                     <button type="button" class="btn btn-primary" (click)="adicionarProfessor()">Adicionar</button> |
-                    <button type="button" class="btn btn-warning" (click)="alterarProfessor()">Alterar</button> |
-                    <button type="button" class="btn btn-danger" (click)="excluirProfessor()">Excluir</button>
+                    <button type="button" class="btn btn-primary" (click)="alterarProfessor()">Alterar</button> |
+                    <button type="button" class="btn btn-primary" (click)="excluirProfessor()">Excluir</button>
                     </div>
                     </div>
                     </div>
-                    <div class="alert alert-primary" role="alert">
+                    <!--<div class="alert alert-primary" role="alert">
                     {{msg}}
-                    </div>
+                    </div>-->
+                    <app-alert [alerta]="mensagem" [ehVisivel]="ehVisivel" [alertType]="alertType" ></app-alert>
+
 
    <!--Formulario -->           
 <div class="card-body">
@@ -45,6 +49,7 @@
                     </select> 
         </div>
         </div>
+</div>
 </div>
 <!--Listagem-->
         <div class="card">

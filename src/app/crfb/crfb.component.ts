@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import{ Crfb} from '../modelo/crfb.model'
 import { CrfbService } from '../servico/crfb.service';
+import {AlertType} from '../alert/alert';
+
 
 @Component({
   selector: 'app-crfb',
@@ -13,10 +15,21 @@ export class CrfbComponent implements OnInit {
   Obj: Crfb= {id:0, ref_ncm:'', descricao:'', vida_util:0, taxa_depreciacao:0}
 
   msg = '';
+
+  cssBarraNotify: String;
+
+  ehVisivel: boolean = true;
+  
+  alertType: AlertType = AlertType.INFO;
+  
+  mensagem: String = '';
+
   constructor(private api: CrfbService) { }
 
   ngOnInit( ){
     this.consultarCrfb();
+    this.cssBarraNotify ='alert alert-primary';
+
   }
   
   

@@ -1,4 +1,3 @@
-
 <div class="jumbotron jumbotron-fluid">
 <div class="container">
     <form>
@@ -8,7 +7,7 @@
  <div class="card-header">
         <div class="row">
         <div class="col-8">
-        Cadastro de Bens
+        <span class="badge badge-pill badge-primary"><h6>&nbsp; Cadastro de Bens&nbsp;</h6></span>
         </div>
         <div class="col-4">
         <button type="button" class="btn btn-primary" (click)="adicionarBem()">Adicionar</button>
@@ -36,10 +35,10 @@
                 <label for="inputNome">Nome {{Obj.Classificacao}}</label>
                 <input type="text" class="form-control" name="inputNome" [(ngModel)]="Obj.nome">
                 </div>
-                <label for="inputCodigo">Classificação</label>
+                <label for="inputCodigo">Classificação(Código-Vida útil-Descrição)</label>
                 <select [compareWith]="compararClassificacao" name="input_idCrfb" [(ngModel)]="Obj.classificacao" class="form-control">
-                        <option *ngFor="let prf of listaCrfb" [ngValue]="prf" class="form-control">
-                            {{ prf.descricao }}
+                        <option *ngFor="let prf of listaCrfb" [ngValue]="prf" class="form-control" >
+                           {{prf.ref_ncm}}->{{prf.vida_util}}->{{ prf.descricao }}
                         </option>
                     </select>
                  <!--    <label for="inputCodigo">Classificação</label>
@@ -123,16 +122,18 @@
         <div class="card">
             <div class="card-body">
                 <table class="table">
-                    <th scope="col">Referência NCM</th>
-                    <th scope="col">Descrição do Bem</th>
+                    <th scope="col">Código</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Valor</th>
                     <th scope="col">Vida útil</th>
                     <th scope="col">Taxa de depreciação</th>
                     <th scope="col">...</th>
                     <tr *ngFor="let objto of listaBem">
                         <td>{{objto.codigo}}</td>
-                        <td>{{objto.descricao}}</td>
                         <td>{{objto.nome}}</td>
-                        <td>{{objto.quantidade}}</td>
+                        <td>{{objto.valor_aquisicao}}</td>
+                        <td>{{objto.classificacao.vida_util}}</td>
+                        <td>{{objto.classificacao.taxa_depreciacao}}</td>
                         <td><button type="button" class="btn btn-outline-info" (click)="carregarDadosBem(objto)">Carregar</button></td>
                     </tr>
                 </table>
