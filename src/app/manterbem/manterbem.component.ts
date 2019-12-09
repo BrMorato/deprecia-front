@@ -64,7 +64,7 @@ consultarBem(){
     .toPromise()
     .then(Bem => {
     this.consultarBem();this.mensagem="Bem "+Bem.nome+" cadastrado com sucesso!";
-  this.ehVisivel=true;this.alertType=AlertType.SUCCESS;}, Bem=>{this.msg="Houve um problema ao cadastrar o bem!";this.cssBarraNotify='alert alert-danger';})
+  this.ehVisivel=true;this.alertType=AlertType.SUCCESS;}, Bem=>{this.mensagem="Houve um problema ao cadastrar o bem!";this.cssBarraNotify='alert alert-danger';})
   }
   excluirBem(){
     this.api.excluirBem(this.Obj.id).toPromise()

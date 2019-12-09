@@ -1,0 +1,31 @@
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">   <form> 
+       
+    <!--Listagem-->
+            <div class="card">
+                <div class="card-body">
+                    <table class="table">
+                        <th scope="col">Código</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Mês</th>
+                        <th scope="col">Ano</th>
+                        <th scope="col">Valor</th>
+                        <th scope="col">...</th>
+                        <tr *ngFor="let ObjDepreciacao of listaDepreciacao">
+                            <td>{{ObjDepreciacao.id}}</td>
+                            <td>{{ObjDepreciacao.bem.nome}}</td>
+                            <td>{{ObjDepreciacao.mes}}</td>
+                            <td>{{ObjDepreciacao.ano}}</td>
+                            <td>{{ObjDepreciacao.valor}}</td>
+                           <!-- <td><button type="button" class="btn btn-outline-info" (click)="carregarDadosBem(objto)">Carregar</button></td>-->
+                        </tr>
+                    </table>
+                </div>
+            </div>
+    
+        </form>
+    </div>
+    </div>
+    
+    <pre>{{Obj|json}}</pre>
+    

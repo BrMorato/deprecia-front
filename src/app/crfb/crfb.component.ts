@@ -44,18 +44,21 @@ consultarCrfb(){
   adicionarCrfb(){
     this.api.adicionarCrfb(this.Obj)
     .toPromise()
-    .then(Crfb => {this.msg="Classificação "+Crfb.descricao+" cadastrado com sucesso!";
-    this.consultarCrfb()});
+    .then(Crfb => {this.mensagem="Classificação "+Crfb.descricao+" cadastrado com sucesso!";
+    this.ehVisivel=true;this.alertType=AlertType.SUCCESS;
+    this.consultarCrfb()}, Crfb=>{this.mensagem="Houve um problema ao cadastrar a classificação!";this.cssBarraNotify='alert alert-danger';})
   }
   excluirCrfb(){
     this.api.excluirCrfb(this.Obj.id).toPromise()
-    .then(Crfb => {this.msg="Classificação excluído com sucesso!";
-    this.consultarCrfb()});
+    .then(Crfb => {this.mensagem="Registro excluído com sucesso!";
+    this.ehVisivel=true;this.alertType=AlertType.SUCCESS;
+    this.consultarCrfb()}, Crfb=>{this.mensagem="Houve um problema ao excluir a classificação!";this.cssBarraNotify='alert alert-danger';})
   }
   
   alterarCrfb(){
     this.api.alterarCrfb(this.Obj.id,this.Obj).toPromise()
-    .then(Crfb =>{this.msg="Classificação " +Crfb.nome+" atualizada com sucesso!";this.consultarCrfb()});
+    .then(Crfb =>{this.mensagem="Classificação "+Crfb.descricao+" alterada com sucesso!";
+    this.ehVisivel=true;this.alertType=AlertType.SUCCESS;this.consultarCrfb()}, Crfb=>{this.mensagem="Houve um problema ao cadastrar a classificação!";this.cssBarraNotify='alert alert-danger';})
   }
   
   carregarDadosCrfb(c: Crfb){

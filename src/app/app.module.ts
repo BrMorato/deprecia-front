@@ -21,6 +21,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { AlertComponent } from './alert/alert.component';
 import { MenuComponent } from './menu/menu.component';
 import { InicialComponent } from './inicial/inicial.component';
+import { DepreciacaoComponent } from './depreciacao/depreciacao.component';
 
 
 @NgModule({
@@ -30,7 +31,9 @@ import { InicialComponent } from './inicial/inicial.component';
     ManterbemComponent,
     AlertComponent,
     MenuComponent,
-    InicialComponent
+    InicialComponent,
+    DepreciacaoComponent
+    
   ],
   imports: [
     BrowserModule,

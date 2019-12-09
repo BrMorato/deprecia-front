@@ -1,8 +1,5 @@
 <div class="jumbotron jumbotron-fluid">
-<div class="container">
-    <form>
-            <div class="card">
-
+<div class="container">   <form> <div class="card">
  <!-- botões-->
  <div class="card-header">
         <div class="row">
@@ -31,16 +28,19 @@
         <label for="inputCodigo">Código</label>
         <input type="text" class="form-control" name="inputCodigo" [(ngModel)]="Obj.codigo">
         </div>
-        <div class="form-group col-md-10">
+        <div class="form-group col-md-12">
                 <label for="inputNome">Nome {{Obj.Classificacao}}</label>
                 <input type="text" class="form-control" name="inputNome" [(ngModel)]="Obj.nome">
                 </div>
+                <div class="form-group col-md-10">
+
                 <label for="inputCodigo">Classificação(Código-Vida útil-Descrição)</label>
+                
                 <select [compareWith]="compararClassificacao" name="input_idCrfb" [(ngModel)]="Obj.classificacao" class="form-control">
                         <option *ngFor="let prf of listaCrfb" [ngValue]="prf" class="form-control" >
-                           {{prf.ref_ncm}}->{{prf.vida_util}}->{{ prf.descricao }}
+                           {{prf.ref_ncm}}-{{prf.vida_util}}-{{ prf.descricao }}
                         </option>
-                    </select>
+                    </select></div>
                  <!--    <label for="inputCodigo">Classificação</label>
                     <select [(ngModel)]="Obj.Classificacao" [ngModelOptions]="{standalone: true}" class="form-control">
                         <option *ngFor="let obj of listaCrfb" [ngValue]="obj.id"  [selected]="obj.id === Obj.Classificacao">{{obj.descricao}}</option>
@@ -76,7 +76,7 @@
                                     </div>
                                     <div class="form-group col-md-4">
                                             <label for="inputDescricao">Estado aquisição</label>
-                                    <select id="estado_aquisicao" name="estado_aquisicao"  class="custom-select" required="required">
+                                    <select id="estado_aquisicao" name="estado_aquisicao"  [(ngModel)]="Obj.estado_aquisicao" class="custom-select" required="required">
                                             <option value="true">Novo</option>
                                             <option value="false">Usado</option>
                                           </select>
@@ -84,10 +84,12 @@
 
                                     <div class="form-group col-md-4">
                                       <label for="inputDescricao">Turnos trabalhados</label>
-                              <select id="turnos" name="turnos" class="custom-select" required="required" [(ngModel)]="Obj.turnos" >
-                                      <option value="1">1 Turno</option>
-                                      <option value="2">2 Turno</option>
-                                      <option value="3">3 Turno</option>
+                              <select ng-options="OBj.turnos as OBj.turnos for OBj.turnos in values" id="turnos" name="turnos" class="custom-select"  required="required" [(ngModel)]="Obj.turnos" >
+                                <option value="?" selected="selected"></option>
+      
+                                <option value="1" >1 Turno</option>
+                                      <option value="2">2 Turnos</option>
+                                      <option value="3">3 Turnos</option>
                                     </select>
                               </div>
                               <div class="form-group col-md-4">

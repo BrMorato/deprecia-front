@@ -3,6 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import {ManterbemComponent} from './manterbem/manterbem.component';
 import {CrfbComponent} from './crfb/crfb.component';
 import {InicialComponent} from './inicial/inicial.component';
+import {DepreciacaoComponent} from './depreciacao/depreciacao.component';
+
 
 const routes: Routes = [
 
@@ -20,6 +22,11 @@ const routes: Routes = [
   {
     path: '',
     component: InicialComponent
+  },
+
+  {
+    path: 'depreciacao',
+    component: DepreciacaoComponent
   }
 
 ];
