@@ -28,7 +28,7 @@ export class ManterbemComponent implements OnInit {
 
 
 
-  Obj: Bem= {id:0, codigo:'', nome:'' ,descricao:'', classificacao: new Crfb, valor_aquisicao:0.00, valor_venda:0.00, estado_aquisicao:false,turnos:0,status:false, dt_aquisicao: new(Date), dt_venda: new(Date)}
+  Obj: Bem= {id:0, codigo:'', nome:'' ,descricao:'', classificacao: new Crfb, valor_aquisicao:0.00, valor_venda:0.00, estado_aquisicao:false,turnos:0,status:false, dt_aquisicao: new(Date), dt_venda: new(Date), tempo_uso:0}
 
   ObjCrfb: Crfb={id:0,ref_ncm:'',descricao:'',vida_util:0,taxa_depreciacao:0.00}
 

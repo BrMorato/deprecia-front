@@ -5,7 +5,7 @@ import {Bem} from '../modelo/bem.model';
 import { Depreciacao } from '../modelo/depreciacao.model';
 
 const url = 'http://localhost:8080/deprecia';
-//const urlCrfb = 'http://localhost:8080/classificacao/';
+const urlBem = 'http://localhost:8080/bens';
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type':'application/json'})
 };
@@ -13,7 +13,7 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
-export class DepreciacaoService {
+export class DepreciacaoService { 
 
   constructor(private http: HttpClient) {  }
 
@@ -24,9 +24,14 @@ export class DepreciacaoService {
     return this.http.get<Depreciacao[]>(url);
   }
 
+  consultarBem(idBem:number): Observable<Bem>{
+    const urlB = `${urlBem}/${idBem}`;
+    return this.http.get<Bem>(urlB);
+  }
+
   
   consultarDepreciacaoBem(idBem:number): Observable<Depreciacao[]>{
-    const urlLocal = `${url}/${10}`;
+    const urlLocal = `${url}/${idBem}`;
     return this.http.get<Depreciacao[]>(urlLocal);
   }
 
@@ -55,3 +60,4 @@ export class DepreciacaoService {
 
   }
 }
+

@@ -13,6 +13,7 @@ export class Bem{
     status:boolean;
     dt_aquisicao: Date;
     dt_venda: Date;
+    tempo_uso: number;
     
 
 } 

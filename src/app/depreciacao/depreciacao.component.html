@@ -2,21 +2,61 @@
     <div class="container">   <form> 
        
     <!--Listagem-->
+
+    <div class="card">
+                <div class="card-body">
+                    <table class="table">
+                                <tr >
+                        <th scope="col" >Código</th>
+                        <td >{{listaBem?.codigo}}</td>
+                        <th scope="col">Nome do BEM</th>
+                        
+
+                            
+                            <td>{{listaBem?.nome}}</td>
+                        </tr>
+                        <th scope="col">Data de aquisição</th>
+                        <th scope="col">Valor de aquisição</th>
+                        <th scope="col">Vida útil</th>
+                        <th scope="col">Turnos de trabalho</th>
+                        <th scope="col">Data venda/calculo</th>
+                        <tr>
+                            <td>{{listaBem?.dt_aquisicao | date: 'dd/MM/yyyy'}}</td>
+                            <td>{{listaBem?.valor_aquisicao | currency:"BRL":"symbol"}}</td>
+                            <td>{{listaBem?.classificacao.vida_util}}</td>
+                            <td>{{listaBem?.turnos}}</td>
+                            <td>{{listaBem?.dt_venda | date: 'dd/MM/yyyy'}}</td>
+                           <!-- <td><button type="button" class="btn btn-outline-info" (click)="carregarDadosBem(objto)">Carregar</button></td>-->
+                        </tr>
+                        <th scope="col">Estado aequisiçao</th>
+                        <th scope="col">Tempo de uso</th>
+                        <th scope="col">...</th>
+                        <th scope="col">Taxa aplicada</th>
+                        <th scope="col">Valor depreciado mês</th>
+                        <tr>
+                            <td>{{listaBem?.estado_aquisicao}}</td>
+                            <td>{{listaBem?.tempo_uso}}</td>
+                            <td>{{ObjDepreciacao?.taxa}}</td>
+                            <td>{{listaBem?.turnos}}</td>
+                            <td> <button type="button" class="btn btn-outline-info" (click)="calcularDepreciacao(listaBem)">Calcular</button></td>
+                           <!-- <td><button type="button" class="btn btn-outline-info" (click)="carregarDadosBem(objto)">Carregar</button></td>-->
+                        </tr>
+                    </table>
+                </div>
+            </div>
             <div class="card">
                 <div class="card-body">
                     <table class="table">
                         <th scope="col">Código</th>
-                        <th scope="col">Nome</th>
                         <th scope="col">Mês</th>
                         <th scope="col">Ano</th>
                         <th scope="col">Valor</th>
                         <th scope="col">...</th>
                         <tr *ngFor="let ObjDepreciacao of listaDepreciacao">
                             <td>{{ObjDepreciacao.id}}</td>
-                            <td>{{ObjDepreciacao.bem.nome}}</td>
-                            <td>{{ObjDepreciacao.mes}}</td>
+                            <td>{{ObjDepreciacao.mes }}</td>
                             <td>{{ObjDepreciacao.ano}}</td>
-                            <td>{{ObjDepreciacao.valor}}</td>
+                            <td>{{ObjDepreciacao.valor | currency:"BRL":"symbol"}}</td>
                            <!-- <td><button type="button" class="btn btn-outline-info" (click)="carregarDadosBem(objto)">Carregar</button></td>-->
                         </tr>
                     </table>

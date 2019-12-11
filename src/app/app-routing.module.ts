@@ -27,6 +27,11 @@ const routes: Routes = [
   {
     path: 'depreciacao',
     component: DepreciacaoComponent
+  },
+
+  {
+    path: 'depreciacao/:idBem',
+    component: DepreciacaoComponent
   }
 
 ];
